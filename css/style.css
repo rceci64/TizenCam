@@ -21,3 +21,11 @@ body {
 	font-size:5em;
 	color:#fff;
 }
+
+#samsung_tizen_web_videoplayer {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 1280px;
+    height: 720px;
+}

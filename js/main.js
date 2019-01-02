@@ -15,14 +15,19 @@ window.onload = function () {
     var textbox = document.querySelector('.contents');
     textbox.addEventListener("click", function(){
     	box = document.querySelector('#textbox');
-    	box.innerHTML = box.innerHTML == "Oof" ? "Lmao" : "E";
+    	box.innerHTML = box.innerHTML == "Oof" ? "Lmao" : "Eggfhfhg";
     });
     
     var objElem = document.createElement('object');
     objElem.type = 'application/avplayer';
+    
+   
+    
     document.body.appendChild(objElem);
     
-    webapis.avplay.open('https://hddn01.skylinewebcams.com/live.m3u8?a=14h4ih392toii30ped8v74rr02');
+    webapis.avplay.open('http://ccma-tva-int-abertis-live.hls.adaptive.level3.net/int/ngrp:324_mobil/playlist.m3u8');
+    
+    
     
     var listener = {
     		onbufferingstart: function() {
@@ -64,16 +69,16 @@ window.onload = function () {
     webapis.avplay.setListener(listener);
     
     
-    var avplayBaseWidth = 1366;
+    var avplayBaseWidth = 1920;
 
     // Calculate ratio to base resolution
     var ratio = avplayBaseWidth / window.document.documentElement.clientWidth;
 
     // Convert rectangle to base resolution
-    var newLeft = 100 * ratio;
-    var newTop = 200 * ratio;
-    var newWidth = 600 * ratio;
-    var newHeight = 400 * ratio;
+    var newLeft = 0 * ratio;
+    var newTop = 0 * ratio;
+    var newWidth = 1920 * ratio;
+    var newHeight = 1080 * ratio;
 
     webapis.avplay.setDisplayRect(newLeft,newTop,newWidth,newHeight);
     
@@ -90,6 +95,5 @@ window.onload = function () {
     webapis.avplay.prepareAsync(successCallback,errorCallback);
     
     webapis.avplay.play();
-    	
     
 };
