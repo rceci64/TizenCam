@@ -1,0 +1,16 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-MEDIA-SEQUENCE:6648
+#EXT-X-TARGETDURATION:8
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242813604.ts
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242821595.ts
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242829585.ts
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242837576.ts
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242845567.ts
+#EXTINF:8.000,
+https://hddn25.skylinewebcams.com/04963006N5B8-1545242853557.ts
