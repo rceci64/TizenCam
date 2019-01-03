@@ -8,15 +8,27 @@
     <title>Tizen TV Web IDE - Tizen TV - Tizen TV basic Application</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script src="js/main.js"></script>
     <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <div class=contents>
-  	<div style='margin:auto;'>
-  		<span class=content_text id=textbox></span>
-  	</div>
+	<div style="position: relative; z-index: 1">
+	  <div class=contents>
+		<div id="title-text">TizenCam</div> 	
+	  </div>
+	  <div id="right-arrow">
+	  	<i class="material-icons md-48">
+			arrow_forward_ios
+		</i>
+	  </div>
+	  
+	  
+  </div>
+  <div id="container-video">
   </div>
 </body>
 </html>

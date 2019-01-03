@@ -1,31 +1,60 @@
 
 window.onload = function () {
     // TODO:: Do your initialization job
-
     // add eventListener for tizenhwkey
+	tizen.tvinputdevice.registerKey('KEY_LEFT');
+	tizen.tvinputdevice.registerKey('KEY_RIGHT');
+	tizen.tvinputdevice.registerKey('KEY_UP');
+	tizen.tvinputdevice.registerKey('KEY_DOWN');
     document.addEventListener('tizenhwkey', function(e) {
+    	console.log(e);
         if(e.keyName == "back")
-	try {
-	    tizen.application.getCurrentApplication().exit();
-	} catch (ignore) {
-	}
+		try {
+		    //tizen.application.getCurrentApplication().exit();
+		} catch (ignore) {
+		}
+		
+		
     });
+    
+    document.body.addEventListener('keydown', handleKeyDown);
+    
+    function handleKeyDown(e){
+    	console.log(e);
+    	switch (e.keyCode) {
+  	    case 40: //10252
+  	    	console.log("avall");
+  	    break;
+
+  	    case 38: //403
+  	    	console.log("amunt");
+  	    break;
+  	    
+  	    case 37: //403
+  	    	console.log("left");
+  		break;
+  	    
+  	    case 39: //403
+  	    	console.log("right");
+  		break;
+	  }
+    }
 
     // Sample code
-    var textbox = document.querySelector('.contents');
-    textbox.addEventListener("click", function(){
+    //var textbox = document.querySelector('.contents');
+    /*textbox.addEventListener("click", function(){
     	box = document.querySelector('#textbox');
     	box.innerHTML = box.innerHTML == "Oof" ? "Lmao" : "Eggfhfhg";
-    });
+    });*/
+    
     
     var objElem = document.createElement('object');
     objElem.type = 'application/avplayer';
-    
    
     
-    document.body.appendChild(objElem);
+    document.getElementById("container-video").appendChild(objElem);
     
-    webapis.avplay.open('http://ccma-tva-int-abertis-live.hls.adaptive.level3.net/int/ngrp:324_mobil/playlist.m3u8');
+    webapis.avplay.open('https://video2archives.earthcam.com/archives/_definst_/MP4:network/485/2019/01/03/0800.mp4/playlist.m3u8');
     
     
     
