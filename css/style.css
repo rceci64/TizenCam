@@ -37,17 +37,54 @@ body {
 	filter: blur(5px);
 }
 
-#right-arrow {
-	position: absolute;
+#arrowRight {
+	    position: absolute;
     left: 90%;
     margin-top: 26%;
 }
-#right-arrow:hover {
+#arrowRight:hover {
     border-color: yellow;
     border-radius: 9px;
     border-style: solid;
     border-width: thick;
 }
+
+#arrowDown {
+	position: absolute;
+    left: 47%;
+    margin-top: 46%;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#arrowDown:hover {
+    border-color: yellow;
+    border-radius: 9px;
+    border-style: solid;
+    border-width: thick;
+}
+
+#arrowLeft {
+	position: absolute;
+    left: 6%;
+    margin-top: 25%;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#arrowLeft:hover {
+    border-color: yellow;
+    border-radius: 9px;
+    border-style: solid;
+    border-width: thick;
+}
+
 
 .material-icons {
     font-size: 100px !important;
