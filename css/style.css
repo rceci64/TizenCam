@@ -5,9 +5,31 @@
 body {
     margin: 0px auto;
     background-color:#222;
+    overflow: hidden;
 }
 
-.contents {
+#container-video {
+	opacity: 0;
+}
+
+.loading{
+	position: absolute;
+	height:1080px;    
+	width: 1920px;
+	left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	opacity: 1;
+}
+
+.titleScreen{
+	position: absolute;
+	left: 0;
+	opacity: 0;
+}
+
+.title {
 	position: absolute;
 	height:1080px;    
 	width: 1920px;
@@ -38,9 +60,9 @@ body {
 }
 
 #arrowRight {
-	    position: absolute;
-    left: 90%;
-    margin-top: 26%;
+	position: absolute;
+    left: 1600px;
+    top: 500px;
 }
 #arrowRight:hover {
     border-color: yellow;
@@ -51,8 +73,8 @@ body {
 
 #arrowDown {
 	position: absolute;
-    left: 47%;
-    margin-top: 46%;
+    left: 900px;
+    top: 900px;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
@@ -67,10 +89,18 @@ body {
     border-width: thick;
 }
 
+.selected {
+    border-color: yellow;
+    border-radius: 9px;
+    border-style: solid;
+    border-width: thick;
+}
+
 #arrowLeft {
 	position: absolute;
-    left: 6%;
-    margin-top: 25%;
+    left: 100px;
+    top: 500px;
+    width: 100px;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);

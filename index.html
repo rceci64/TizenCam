@@ -16,26 +16,33 @@
 </head>
 
 <body>
-	<div style="position: relative; z-index: 1">
-	  <div class=contents>
-		<div id="title-text">TizenCam</div> 	
+	<div style="position: absolute; z-index: 1">
+	  <div class = "titleScreen">
+	  		<div class="title">
+				<div id="title-text">TizenCam</div> 
+			</div>
+			<div id="arrowRight" onclick="doAction('arrowRight')">
+		  	<i class="material-icons md-48">
+				arrow_forward_ios
+			</i>
+		  </div>
+		  <div id="arrowDown" onclick="doAction('arrowDown')">
+		  	<i class="material-icons md-48">
+				arrow_forward_ios
+			</i>
+		  </div>
+		  <div id="arrowLeft" onclick="doAction('arrowLeft')">
+		  	<i class="material-icons md-48">
+				arrow_forward_ios
+			</i>
+		  </div>
 	  </div>
-	  <div id="arrowRight" onclick="doAction('arrowRight')">
-	  	<i class="material-icons md-48">
-			arrow_forward_ios
-		</i>
+	  <div class = "loading">
+	  	<div id="title-text">Loading...</div>
 	  </div>
-	  <div id="arrowDown" onclick="doAction('arrowDown')">
-	  	<i class="material-icons md-48">
-			arrow_forward_ios
-		</i>
-	  </div>
-	  <div id="arrowLeft" onclick="doAction('arrowLeft')">
-	  	<i class="material-icons md-48">
-			arrow_forward_ios
-		</i>
-	  </div>
+	  <div class = "registerScreen">
 	  
+	  </div>
 	  
   </div>
   <div id="container-video">

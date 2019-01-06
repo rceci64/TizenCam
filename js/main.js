@@ -1,14 +1,23 @@
 var actions = {
-	"inicial" : {
+	"titleScreen" : {
 		"arrowLeft" : {
 			action :  function() { goRegister(); },
 			selected : false,
 			onRight : function() { select("arrowRight"); },
+			onDown : function() { select("arrowDown"); },
 			onLeft : function() { goRegister(); }
+		},
+		"arrowRight" : {
+			action :  function() { goInformation(); },
+			selected : false,
+			onRight : function() { select("arrowRight"); },
+			onDown : function() { select("arrowDown"); },
+			onLeft : function() { select("arrowLeft"); }
 		},
 		"arrowDown" : {
 			action : function() { goWebCams() },
 			selected : false,
+			onUp : function() { select("arrowLeft"); },
 			onRight : function() { select("arrowRight"); },
 			onLeft : function() { select("arrowLeft") }
 		}
@@ -60,14 +69,12 @@ var actions = {
 	}
 };
 
-var pantalla;
-var currentSelected;
-pantalla = "inicial";
-currentSelected = "arrowLeft";
+var pantalla = "titleScreen";
+var currentSelected = "arrowLeft";
 
 function select(element) {
 	
-	document.getElementById(currentSelected).className.replace(' selected', '');
+	document.getElementById(currentSelected).className = document.getElementById(currentSelected).className.replace(' selected', '');
 	currentSelected = element;
 
 	document.getElementById(element).className += " selected";
@@ -77,6 +84,7 @@ function select(element) {
 
 // Accions
 function goRegister() {
+	animate("titleScreen", "registerScreen", "left");
 	console.log("goRegister()");
 }
 
@@ -108,17 +116,29 @@ function scrollUp() {
 	console.log("scrollUp()");
 }
 
-
+function animate(from, to, direction){
+	if(direction=="left"){
+		$("."+from).fadeIn('slow',function(){
+			  $(this).animate({'left': '+=1920px'},1200);
+		});
+		$("."+to).fadeIn('slow',function(){
+			  $(this).animate({'left': '+=1920px'},1200);
+		});
+	}
+}
 
 function doAction(element) {
 	console.log("do action");
 	actions[pantalla][element].action();
 }
 
+
 window.onload = function() {
 	// TODO:: Do your initialization job
 	// add eventListener for tizenhwkey
 
+	select("arrowLeft");
+	
 	tizen.tvinputdevice.registerKey('KEY_LEFT');
 	tizen.tvinputdevice.registerKey('KEY_RIGHT');
 	tizen.tvinputdevice.registerKey('KEY_UP');
@@ -139,18 +159,22 @@ window.onload = function() {
 		console.log(e);
 		switch (e.keyCode) {
 		case 40: // 10252
+			actions[pantalla][currentSelected].onDown();
 			console.log("avall");
 			break;
 
 		case 38: // 403
+			actions[pantalla][currentSelected].onUp();
 			console.log("amunt");
 			break;
 
 		case 37: // 403
+			actions[pantalla][currentSelected].onLeft();
 			console.log("left");
 			break;
 
 		case 39: // 403
+			actions[pantalla][currentSelected].onRight();
 			console.log("right");
 			break;
 		}
@@ -183,6 +207,18 @@ window.onload = function() {
 
 		onbufferingcomplete : function() {
 			console.log("Buffering complete.");
+			setTimeout(function(){
+				$(".titleScreen").fadeIn('slow',function(){
+					  $(this).animate({'opacity': '+=1'},4000);
+				});
+				$("#container-video").fadeIn('slow',function(){
+					  $(this).animate({'opacity': '+=1'},4000);
+				});
+			},500);
+			$(".loading").fadeIn('slow',function(){
+				  $(this).animate({'opacity': '-=1'},800);
+			});
+			//Fer loading
 		},
 		onstreamcompleted : function() {
 			console.log("Stream Completed");
