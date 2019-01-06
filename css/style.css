@@ -8,6 +8,16 @@ body {
     overflow: hidden;
 }
 
+h1 {
+	color: white;
+	font-size: 100px;
+}
+
+p {
+	color: white;
+	font-size: 40px;
+}
+
 #container-video {
 	opacity: 0;
 }
@@ -36,6 +46,43 @@ body {
 	opacity: 0;
 }
 
+.catalogScreen{
+	position: absolute;
+	height:1080px;    
+	width: 1920px;
+	top: 1080px;
+}
+
+.informationScreen{
+	position: absolute;
+	height:1080px;    
+	width: 620px;
+	left: 1920px;
+	background-color: rgba(0,0,0,0.8);
+    z-index: 5;
+    box-shadow: 0 25px 40px 0 rgba(0, 0, 0, 0.2), 0 15px 30px 0 rgba(0, 0, 0, 0.19);
+	
+}
+
+#informationEnclosure{
+	margin: 60px;
+}
+
+#descriptionEnclosure{
+	height: 575px;
+    margin-bottom: 40px;
+    background-color: red;
+}
+
+
+#returnFromInfo{
+	position: absolute;
+	height:1080px;    
+	width: 1300px;
+	left: 1920px;
+	z-index: 5;
+}
+
 .title {
 	position: absolute;
 	height:1080px;    
@@ -59,11 +106,13 @@ body {
 }
 
 #container-video {
+	/*
 	-webkit-filter: blur(5px);
 	-moz-filter: blur(5px);
 	-o-filter: blur(5px);
 	-ms-filter: blur(5px);
 	filter: blur(5px);
+	*/
 }
 
 .arrowRight {
@@ -85,6 +134,8 @@ body {
     transform: rotate(90deg);
 }
 
+
+
 .selected {
     border-color: yellow;
     border-radius: 9px;
@@ -105,9 +156,41 @@ body {
     transform: rotate(180deg);
 }
 
+.arrowUp {
+	position: absolute;
+    left: 903px;
+    top: 70px;
+    z-index: 2;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+#thumbsUpIcon {
+	color: green !important;
+}
+
+#thumbsDownIcon {
+	color: red !important;
+}
 
 .material-icons {
     font-size: 100px !important;
     color: white !important;
 
+}
+
+#registerForm {
+	position: absolute;
+    height: 250px;
+    width: 1000px;
+    z-index: 3;
+    background-color: red;
+    top: 415px;
+    left: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

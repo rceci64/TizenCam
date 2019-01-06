@@ -10,16 +10,17 @@ var actions = {
 		"arrowRight" : {
 			action :  function() { goInformation(); },
 			selected : false,
-			onRight : function() { select("arrowRight"); },
+			onRight : function() { goInformation(); },
 			onDown : function() { select("arrowDown"); },
 			onLeft : function() { select("arrowLeft"); }
 		},
 		"arrowDown" : {
-			action : function() { goWebCams() },
+			action : function() { goCatalog() },
 			selected : false,
 			onUp : function() { select("arrowLeft"); },
 			onRight : function() { select("arrowRight"); },
-			onLeft : function() { select("arrowLeft") }
+			onLeft : function() { select("arrowLeft") },
+			onDown : function() { goCatalog() }
 		}
 	},
 	"registerScreen" : {
@@ -43,7 +44,7 @@ var actions = {
 			onLeft : function() { select("arrowLeft"); }
 		}
 	},
-	"information" : {
+	"informationScreen" : {
 		"like" : {
 			action : function() { like(); },
 			selected : false,
@@ -54,9 +55,15 @@ var actions = {
 			action : function() { dislike(); },
 			selected : false,
 			onLeft : function() { select("like"); }
+		},
+		"arrowCloseInfo" : {
+			action : function() { closeInformation(); },
+			selected : false,
+			onLeft : function() { closeInformation(); },
+			onRight : function() { select("like") }
 		}
 	},
-	"catalog" : {
+	"catalogScreen" : {
 		"elements" : [
 		// elements procedents de la bbdd
 		],
@@ -77,11 +84,17 @@ var actions = {
 };
 
 var pantalla = "titleScreen";
+var oldScreen = "titleScreen";
 var currentSelected = "arrowLeft";
 
 function select(element) {
 	
-	document.getElementById(currentSelected + "-" + pantalla).className = document.getElementById(currentSelected + "-" + pantalla).className.replace(' selected', '');
+	if(oldScreen != pantalla){
+		document.getElementById(currentSelected + "-" + oldScreen).className = document.getElementById(currentSelected + "-" + oldScreen).className.replace(' selected', '');
+	}else{
+		document.getElementById(currentSelected + "-" + pantalla).className = document.getElementById(currentSelected + "-" + pantalla).className.replace(' selected', '');
+	}
+	
 	currentSelected = element;
 
 	document.getElementById(element+ "-" + pantalla).className += " selected";
@@ -92,29 +105,48 @@ function select(element) {
 // Accions
 function goRegister() {
 	animate("titleScreen", "registerScreen", "left");
-	//currentSelected = "arrowRight";
+	oldScreen = pantalla;
 	pantalla = "registerScreen";
 	select("arrowRight");
+	oldScreen = pantalla;
 	console.log("goRegister()");
 }
 
 function goTitle() {
 	animate("registerScreen", "titleScreen", "right");
-	//currentSelected = "arrowLeft";
+	oldScreen = pantalla;
 	pantalla = "titleScreen";
 	select("arrowLeft");
+	oldScreen = pantalla;
 	console.log("goTitle()");
-}
-
-function goWebCams() {
-	console.log("goWebCams()");
 }
 
 function goInformation() {
 	console.log("goInformation()");
+	animate("titleScreen", "informationScreen", "showInfo");
+	oldScreen = pantalla;
+	pantalla = "informationScreen";
+	select("thumbsUp");
+	oldScreen = pantalla;
+	console.log("goInformation()");
+}
+
+function closeInformation() {
+	console.log("closeInformation()");
+	animate("informationScreen", "titleScreen", "hideInfo");
+	oldScreen = pantalla;
+	pantalla = "titleScreen";
+	select("arrowRight");
+	oldScreen = pantalla;
+	console.log("closeInformation()");
 }
 
 function goCatalog() {
+	animate("titleScreen", "catalogScreen", "up");
+	oldScreen = pantalla;
+	pantalla = "catalogScreen";
+	select("arrowUp");
+	oldScreen = pantalla;
 	console.log("goCatalog()");
 }
 
@@ -135,21 +167,56 @@ function scrollUp() {
 }
 
 function animate(from, to, direction){
-	if(direction=="left"){
-		$("."+from).fadeIn('slow',function(){
-			  $(this).animate({'left': '+=1920px'},1200);
-		});
-		$("."+to).fadeIn('slow',function(){
-			  $(this).animate({'left': '+=1920px'},1200);
-		});
-	}
-	if(direction=="right"){
-		$("."+from).fadeIn('slow',function(){
-			  $(this).animate({'left': '-=1920px'},1200);
-		});
-		$("."+to).fadeIn('slow',function(){
-			  $(this).animate({'left': '-=1920px'},1200);
-		});
+	switch (direction){
+	
+		case "left":
+			$("."+from).fadeIn('slow',function(){
+				$(this).animate({'left': '+=1920px'},1200);
+			});
+			$("."+to).fadeIn('slow',function(){
+				$(this).animate({'left': '+=1920px'},1200);
+			});
+			break;
+			
+		case "right":
+			$("."+from).fadeIn('slow',function(){
+				$(this).animate({'left': '-=1920px'},1200);
+			});
+			$("."+to).fadeIn('slow',function(){
+				$(this).animate({'left': '-=1920px'},1200);
+			});
+			break;
+			
+		case "up":
+			$("."+from).fadeIn('slow',function(){
+				$(this).animate({'top': '-=1080px'},1200);
+			});
+			$("."+to).fadeIn('slow',function(){
+				$(this).animate({'top': '-=1080'},1200);
+			});
+			break;
+			
+		case "down":
+			$("."+from).fadeIn('slow',function(){
+				$(this).animate({'top': '+=1080px'},1200);
+			});
+			$("."+to).fadeIn('slow',function(){
+				$(this).animate({'top': '+=1080px'},1200);
+			});
+			break;
+			
+		case "showInfo":
+			$("."+to).fadeIn('slow',function(){
+				$(this).animate({'left': '-=620px'},1200);
+				document.getElementById("returnFromInfo").style.left = '0px';
+			});
+			break;
+		case "hideInfo":
+			$("."+from).fadeIn('slow',function(){
+				$(this).animate({'left': '+=620px'},1200);
+				document.getElementById("returnFromInfo").style.left = '1920px';
+			});
+			break;
 	}
 }
 
@@ -212,8 +279,9 @@ window.onload = function() {
 	
 	$('.selectable').hover(function(event){
 		console.log("hovered over " + this.id);
-		//if(document.getElementById(this.id).className)
-		select((this.id).substring(0, (this.id).indexOf('-')));
+		if((this.id).split('-')[1] == pantalla){
+			select((this.id).substring(0, (this.id).indexOf('-')));
+		}
 	});
 	
 	// Sample code
