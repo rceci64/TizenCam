@@ -22,6 +22,13 @@ var actions = {
 			onLeft : function() { select("arrowLeft") }
 		}
 	},
+	"registerScreen" : {
+		"arrowRight" : {
+			action :  function() { goTitle(); },
+			selected : false,
+			onRight : function() { goTitle(); },
+		}
+	},
 	"webcam" : {
 		"arrowRight" : {
 			action : function() { goInformation(); },
@@ -74,10 +81,10 @@ var currentSelected = "arrowLeft";
 
 function select(element) {
 	
-	document.getElementById(currentSelected).className = document.getElementById(currentSelected).className.replace(' selected', '');
+	document.getElementById(currentSelected + "-" + pantalla).className = document.getElementById(currentSelected + "-" + pantalla).className.replace(' selected', '');
 	currentSelected = element;
 
-	document.getElementById(element).className += " selected";
+	document.getElementById(element+ "-" + pantalla).className += " selected";
 
 }
 
@@ -85,7 +92,18 @@ function select(element) {
 // Accions
 function goRegister() {
 	animate("titleScreen", "registerScreen", "left");
+	//currentSelected = "arrowRight";
+	pantalla = "registerScreen";
+	select("arrowRight");
 	console.log("goRegister()");
+}
+
+function goTitle() {
+	animate("registerScreen", "titleScreen", "right");
+	//currentSelected = "arrowLeft";
+	pantalla = "titleScreen";
+	select("arrowLeft");
+	console.log("goTitle()");
 }
 
 function goWebCams() {
@@ -123,6 +141,14 @@ function animate(from, to, direction){
 		});
 		$("."+to).fadeIn('slow',function(){
 			  $(this).animate({'left': '+=1920px'},1200);
+		});
+	}
+	if(direction=="right"){
+		$("."+from).fadeIn('slow',function(){
+			  $(this).animate({'left': '-=1920px'},1200);
+		});
+		$("."+to).fadeIn('slow',function(){
+			  $(this).animate({'left': '-=1920px'},1200);
 		});
 	}
 }
@@ -177,9 +203,19 @@ window.onload = function() {
 			actions[pantalla][currentSelected].onRight();
 			console.log("right");
 			break;
+		case 13: // 403
+			actions[pantalla][currentSelected].action();
+			break;
+		
 		}
 	}
-
+	
+	$('.selectable').hover(function(event){
+		console.log("hovered over " + this.id);
+		//if(document.getElementById(this.id).className)
+		select((this.id).substring(0, (this.id).indexOf('-')));
+	});
+	
 	// Sample code
 	// var textbox = document.querySelector('.contents');
 	/*
@@ -275,4 +311,3 @@ window.onload = function() {
 	webapis.avplay.play();
 
 };
-

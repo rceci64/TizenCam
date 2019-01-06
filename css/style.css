@@ -23,6 +23,13 @@ body {
 	opacity: 1;
 }
 
+.registerScreen{
+	position: absolute;
+	height:1080px;    
+	width: 1920px;
+	left: -1920px;
+}
+
 .titleScreen{
 	position: absolute;
 	left: 0;
@@ -59,34 +66,23 @@ body {
 	filter: blur(5px);
 }
 
-#arrowRight {
+.arrowRight {
 	position: absolute;
     left: 1600px;
     top: 500px;
-}
-#arrowRight:hover {
-    border-color: yellow;
-    border-radius: 9px;
-    border-style: solid;
-    border-width: thick;
+    z-index: 2;
 }
 
-#arrowDown {
+.arrowDown {
 	position: absolute;
     left: 900px;
     top: 900px;
+    z-index: 2;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-}
-
-#arrowDown:hover {
-    border-color: yellow;
-    border-radius: 9px;
-    border-style: solid;
-    border-width: thick;
 }
 
 .selected {
@@ -96,23 +92,17 @@ body {
     border-width: thick;
 }
 
-#arrowLeft {
+.arrowLeft {
 	position: absolute;
     left: 100px;
     top: 500px;
     width: 100px;
+    z-index: 2;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-}
-
-#arrowLeft:hover {
-    border-color: yellow;
-    border-radius: 9px;
-    border-style: solid;
-    border-width: thick;
 }
 
 

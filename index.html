@@ -13,35 +13,39 @@
     <script src="js/main.js"></script>
     <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
+	</head>
 
 <body>
 	<div style="position: absolute; z-index: 1">
 	  <div class = "titleScreen">
-	  		<div class="title">
-				<div id="title-text">TizenCam</div> 
-			</div>
-			<div id="arrowRight" onclick="doAction('arrowRight')">
-		  	<i class="material-icons md-48">
+  		<div class="title">
+			<div id="title-text" class = "selectable">TizenCam</div> 
+		</div>
+		<div id="arrowRight-titleScreen" class = "selectable arrowRight" onclick="doAction('arrowRight')">
+	  		<i class="material-icons md-48">
 				arrow_forward_ios
 			</i>
-		  </div>
-		  <div id="arrowDown" onclick="doAction('arrowDown')">
-		  	<i class="material-icons md-48">
+	  	</div>
+		<div id="arrowDown-titleScreen" class = "selectable arrowDown" onclick="doAction('arrowDown')">
+	  		<i class="material-icons md-48">
 				arrow_forward_ios
 			</i>
-		  </div>
-		  <div id="arrowLeft" onclick="doAction('arrowLeft')">
-		  	<i class="material-icons md-48">
+		</div>
+		<div id="arrowLeft-titleScreen" class = "selectable arrowLeft" onclick="doAction('arrowLeft')">
+			<i class="material-icons md-48">
 				arrow_forward_ios
 			</i>
-		  </div>
+		</div>
 	  </div>
 	  <div class = "loading">
 	  	<div id="title-text">Loading...</div>
 	  </div>
 	  <div class = "registerScreen">
-	  
+		<div id="arrowRight-registerScreen" class = "selectable arrowRight" onclick="doAction('arrowRight')">
+	  		<i class="material-icons md-48">
+				arrow_forward_ios
+			</i>
+	  	</div>
 	  </div>
 	  
   </div>
