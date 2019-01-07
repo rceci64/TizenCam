@@ -42,19 +42,19 @@
 			</i>
 	  	</div>
 	  </div>
-	  <div class = "loading">
+	  <div class="loading">
 	  	<div id="title-text">Loading...</div>
 	  </div>
-	  <div class = "registerScreen">
+	  <div class="registerScreen">
 		<div id="arrowRight-registerScreen" class = "selectable arrowRight" onclick="doAction('arrowRight')">
 	  		<i class="material-icons md-48">
 				arrow_forward_ios
 			</i>
 	  	</div>
-	  	<div id = "registerForm">
+	  	<div id="registerForm">
 	  		<form action="" style="text-align: end;">
-	  			<input type="text" name="username"><br>
-	  			<input type="submit" value="Send">
+	  			<input id="userInput-registerScreen" class="selectable userInput" type="text" onfocus="openKeyboard()" onblur="closeKeyboard()" name="username"><br>
+	  			<input id="buttonSend-registerScreen" class="selectable buttonSend" type="submit" value="Send">
 	  		</form>
 	  		 
 	  	</div>
@@ -88,10 +88,7 @@
 				</div>
 	  	</div>
 	  </div>
-	  <div id="returnFromInfo" onclick="doAction('arrowCloseInfo')">
-	  
-	  </div>
-	  
+	  <div id="returnFromInfo" onclick="doAction('arrowCloseInfo')"></div>
   </div>
   <div id="container-video">
   </div>

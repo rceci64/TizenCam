@@ -28,6 +28,20 @@ var actions = {
 			action :  function() { goTitle(); },
 			selected : false,
 			onRight : function() { goTitle(); },
+			onLeft : function() { select("userInput"); },
+			onDown : function() { select("buttonSend"); }
+		},
+		"userInput" : {
+			//action :  function() { goTitle(); },
+			selected : false,
+			onRight : function() { select("arrowRight"); },
+			onDown : function() { select("buttonSend") }
+		},
+		"buttonSend" : {
+			//action :  function() { goTitle(); },
+			selected : false,
+			onRight : function() { select("arrowRight"); },
+			onUp: function() { select("userInput") }
 		}
 	},
 	"webcam" : {
@@ -226,12 +240,19 @@ function doAction(element) {
 }
 
 
+function openKeyboard(){
+	console.log('openkeyboard');
+}
+
+function closeKeyboard(){
+	console.log('closekeyboard');
+}
+
 window.onload = function() {
 	// TODO:: Do your initialization job
 	// add eventListener for tizenhwkey
 
 	select("arrowLeft");
-	
 	tizen.tvinputdevice.registerKey('KEY_LEFT');
 	tizen.tvinputdevice.registerKey('KEY_RIGHT');
 	tizen.tvinputdevice.registerKey('KEY_UP');
@@ -245,7 +266,7 @@ window.onload = function() {
 			}
 
 	});
-
+	
 	document.body.addEventListener('keydown', handleKeyDown);
 
 	function handleKeyDown(e) {
