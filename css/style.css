@@ -71,9 +71,28 @@ p {
 #descriptionEnclosure{
 	height: 575px;
     margin-bottom: 40px;
-    background-color: red;
 }
 
+#usrLogged{
+    position: absolute;
+    z-index: 2;
+    width: 1000px;
+    text-align: end;
+    top: 70px;
+    font-size: 40px;
+    color: white;
+    left: 830px;
+}
+
+#messageForm{
+    position: absolute;
+    z-index: 4;
+    text-align: end;
+    top: 570px;
+    font-size: 35px;
+    color: white;
+    left: 650px;
+}
 
 #returnFromInfo{
 	position: absolute;
@@ -106,13 +125,7 @@ p {
 }
 
 #container-video {
-	/*
-	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);
-	-o-filter: blur(5px);
-	-ms-filter: blur(5px);
 	filter: blur(5px);
-	*/
 }
 
 .userInput{
@@ -151,12 +164,47 @@ p {
     transform: rotate(90deg);
 }
 
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 182px;
+    margin-top: 3px;
+    margin-left: 174px;
+    margin-right: 174px;
+    
+  }
+  .cell {
+    flex: 0 0 29%;
+    height: 215px;
+    margin-bottom: 29px;
+    background-color: #999;
+    background-size: cover;
+  }
+  
+  
+
+.videoTitle{
+	margin-top: 170px;
+}
+  
 .selected {
     box-shadow: 0 0 7pt 6pt yellow;
     -webkit-transition : box-shadow 300ms ease-out;
   	-moz-transition : box-shadow 300ms ease-out;
   	-o-transition : box-shadow 300ms ease-out;
   	transition : box-shadow 300ms ease-out;
+}
+
+#actualPage {
+    position: absolute;
+    text-align: end;
+    z-index: 2;
+    top: 900px;
+    left: 1040px;
+    font-size: 90px;
+    color: white;
+    width: 500px;
 }
 
 .arrowLeft {
@@ -210,4 +258,45 @@ p {
     justify-content: center;
 	background-color: rgba(0,0,0,0.8);
     box-shadow: 0 25px 40px 0 rgba(0, 0, 0, 0.2), 0 15px 30px 0 rgba(0, 0, 0, 0.19);   
+}
+
+.scroll-left {
+	overflow: hidden;
+	position: relative;
+}
+.scroll-left p {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	text-align: center;
+	/* Starting position */
+	-moz-transform:translateX(100%);
+	-webkit-transform:translateX(100%); 
+	transform:translateX(100%);
+	/* Apply animation to this element */ 
+	-moz-animation: scroll-left 60s linear infinite;
+	-webkit-animation: scroll-left 60s linear infinite;
+	animation: scroll-left 60s linear infinite;
+	}
+	/* Move it (define the animation) */
+	@-moz-keyframes scroll-left {
+	0% { -moz-transform: translateX(100%); }
+	100% { -moz-transform: translateX(-100%); }
+	}
+	@-webkit-keyframes scroll-left {
+	0% { -webkit-transform: translateX(100%); }
+	100% { -webkit-transform: translateX(-100%); }
+	}
+	@keyframes scroll-left {
+	0% { 
+	-moz-transform: translateX(100%); /* Browser bug fix */
+	-webkit-transform: translateX(100%); /* Browser bug fix */
+	transform: translateX(100%); 
+	}
+	100% { 
+	-moz-transform: translateX(-100%); /* Browser bug fix */
+	-webkit-transform: translateX(-100%); /* Browser bug fix */
+	transform: translateX(-100%); 
+	}
 }
